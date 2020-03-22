@@ -3,6 +3,7 @@ package pl.itj.dev.services.authservice.services.impl;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,9 +15,9 @@ import pl.itj.dev.services.authservice.domain.security.DatabaseUserDetails;
 import pl.itj.dev.services.authservice.repositories.UserRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
+@Qualifier(value = "customUserService")
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDetailsServiceImpl implements UserDetailsService {

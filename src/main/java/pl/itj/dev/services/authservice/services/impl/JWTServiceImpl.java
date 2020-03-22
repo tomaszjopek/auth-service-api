@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import pl.itj.dev.services.authservice.services.ifc.JWTService;
@@ -31,7 +32,7 @@ public class JWTServiceImpl implements JWTService {
                 .setSubject(user.getUsername())
                 .setIssuedAt(issueDate)
                 .setExpiration(expireDate)
-                .claim("roles", user.getAuthorities())
+                .claim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).toArray(String[]::new))
                 .signWith(SignatureAlgorithm.HS256, secretKey);
 
         return Optional.of(jwtBuilder.compact());

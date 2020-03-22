@@ -34,4 +34,9 @@ public class AuthController {
         UserDetails user = userDetailsService.loadUserByUsername(userLoginCredentials.getUsername());
         return ResponseEntity.ok(new JWTResponse(jwtService.generateToken(user).orElse("")));
     }
+
+    @GetMapping(value = "/test")
+    public String test() {
+        return "test";
+    }
 }

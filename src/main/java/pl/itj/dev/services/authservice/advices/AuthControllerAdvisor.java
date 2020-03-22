@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import pl.itj.dev.services.authservice.domain.error.ErrorResponse;
 
 @RestControllerAdvice
-public class UserControllerAdvisor {
+public class AuthControllerAdvisor {
 
     @ExceptionHandler(value = {UsernameNotFoundException.class})
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
