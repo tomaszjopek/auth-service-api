@@ -1,0 +1,41 @@
+# app properties
+spring:
+  application:
+    name: auth-api-dev
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+
+server:
+  port: 8080
+
+#security
+#spring.security.user.name=dev
+#spring.security.user.password=dev
+
+#eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+jwt:
+  secretKey: dasda213dasddas12
+
+bcrypt:
+  rounds: 12
+
+zuul:
+  prefix: /api
