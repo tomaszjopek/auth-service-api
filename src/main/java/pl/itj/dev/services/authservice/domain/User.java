@@ -22,7 +22,6 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Role> roles;
-
 }
