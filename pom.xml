@@ -19,6 +19,22 @@
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -101,7 +117,7 @@
                     <verbose>true</verbose>
                     <images>
                         <image>
-                            <name>auth-service</name>
+                            <name>tjopek/auth-service</name>
                             <alias>auth-service</alias>
                             <build>
                                 <dockerFileDir>${project.basedir}</dockerFileDir>
@@ -110,10 +126,12 @@
                                 <namingStrategy>alias</namingStrategy>
                                 <ports>
                                     <port>8080:8080</port>
+                                    <port>9092:9092</port>
                                 </ports>
                             </run>
                         </image>
                     </images>
+                    <pushRegistry>127.0.0.1:5000</pushRegistry>
                 </configuration>
             </plugin>
         </plugins>

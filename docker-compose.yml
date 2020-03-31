@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  auth-service:
+    image: 127.0.0.1:5000/tjopek/auth-service:latest
+    ports:
+      - "8080:8080"
+      - "9092:9092"
+    networks:
+      - backend
+  eureka-service:
+    image: 127.0.0.1:5000/tjopek/eureka-server:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - backend
+
+networks:
+  backend:
